@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cfag.port.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://cfag.port.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cfag.port.com/">
+      <s:element name="GeterrMsg">
+        <s:complexType />
+      </s:element>
+      <s:element name="GeterrMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeterrMsgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mailto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailcc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailBcc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mfrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bodys" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailAttached">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mailto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailcc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mfrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bodys" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileBuffer" type="tns:ArrayOfBase64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMailAttachedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMailAttachedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailDelay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mailto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailcc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailBcc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mfrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bodys" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailDelayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMailDelayResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryMailInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="system" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="datefrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryMailInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryMailInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailWithOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="to" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileBuffer" type="tns:ArrayOfBase64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailWithOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMailWithOptionsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="to" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TestOptionsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GeterrMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:GeterrMsg" />
+  </wsdl:message>
+  <wsdl:message name="GeterrMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:GeterrMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailAttachedSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMailAttached" />
+  </wsdl:message>
+  <wsdl:message name="SendMailAttachedSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailAttachedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailDelaySoapIn">
+    <wsdl:part name="parameters" element="tns:SendMailDelay" />
+  </wsdl:message>
+  <wsdl:message name="SendMailDelaySoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailDelayResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryMailInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryMailInfo" />
+  </wsdl:message>
+  <wsdl:message name="QueryMailInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryMailInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailWithOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMailWithOptions" />
+  </wsdl:message>
+  <wsdl:message name="SendMailWithOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailWithOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:TestOptions" />
+  </wsdl:message>
+  <wsdl:message name="TestOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:TestOptionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="GeterrMsg">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">若發送郵件失敗,則可以通過此函數查看失敗原因</wsdl:documentation>
+      <wsdl:input message="tns:GeterrMsgSoapIn" />
+      <wsdl:output message="tns:GeterrMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">不帶附件的郵件發送方法</wsdl:documentation>
+      <wsdl:input message="tns:SendMailSoapIn" />
+      <wsdl:output message="tns:SendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMailAttached">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">帶附件的郵件發送方法</wsdl:documentation>
+      <wsdl:input message="tns:SendMailAttachedSoapIn" />
+      <wsdl:output message="tns:SendMailAttachedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMailDelay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">郵件延遲發送,郵件先被存儲在Database里,后續排隊發送</wsdl:documentation>
+      <wsdl:input message="tns:SendMailDelaySoapIn" />
+      <wsdl:output message="tns:SendMailDelaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryMailInfo">
+      <wsdl:input message="tns:QueryMailInfoSoapIn" />
+      <wsdl:output message="tns:QueryMailInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMailWithOptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">帶回執的發送方式</wsdl:documentation>
+      <wsdl:input message="tns:SendMailWithOptionsSoapIn" />
+      <wsdl:output message="tns:SendMailWithOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestOptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">帶回執的發送方式Test</wsdl:documentation>
+      <wsdl:input message="tns:TestOptionsSoapIn" />
+      <wsdl:output message="tns:TestOptionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GeterrMsg">
+      <soap:operation soapAction="http://cfag.port.com/GeterrMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap:operation soapAction="http://cfag.port.com/SendMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailAttached">
+      <soap:operation soapAction="http://cfag.port.com/SendMailAttached" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailDelay">
+      <soap:operation soapAction="http://cfag.port.com/SendMailDelay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryMailInfo">
+      <soap:operation soapAction="http://cfag.port.com/QueryMailInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailWithOptions">
+      <soap:operation soapAction="http://cfag.port.com/SendMailWithOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestOptions">
+      <soap:operation soapAction="http://cfag.port.com/TestOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GeterrMsg">
+      <soap12:operation soapAction="http://cfag.port.com/GeterrMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://cfag.port.com/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailAttached">
+      <soap12:operation soapAction="http://cfag.port.com/SendMailAttached" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailDelay">
+      <soap12:operation soapAction="http://cfag.port.com/SendMailDelay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryMailInfo">
+      <soap12:operation soapAction="http://cfag.port.com/QueryMailInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMailWithOptions">
+      <soap12:operation soapAction="http://cfag.port.com/SendMailWithOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestOptions">
+      <soap12:operation soapAction="http://cfag.port.com/TestOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://10.130.14.86:8090/service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://10.130.14.86:8090/service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

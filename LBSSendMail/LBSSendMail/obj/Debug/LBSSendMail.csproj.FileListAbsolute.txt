@@ -1,0 +1,10 @@
+D:\Work\LBSJob\LBSSendMail\LBSSendMail\bin\Debug\LBSSendMail.exe.config
+D:\Work\LBSJob\LBSSendMail\LBSSendMail\bin\Debug\LBSSendMail.exe
+D:\Work\LBSJob\LBSSendMail\LBSSendMail\bin\Debug\LBSSendMail.pdb
+D:\Work\LBSJob\LBSSendMail\LBSSendMail\bin\Debug\DIYGENS.COM.FRAMEWORK.V3.5.dll
+D:\Work\LBSJob\LBSSendMail\LBSSendMail\obj\Debug\LBSSendMail.csprojResolveAssemblyReference.cache
+D:\Work\LBSJob\LBSSendMail\LBSSendMail\obj\Debug\LBSSendMail.exe
+D:\Work\LBSJob\LBSSendMail\LBSSendMail\obj\Debug\LBSSendMail.pdb
+D:\Work\LBSJob\git\test\LBSSendMail\LBSSendMail\bin\Debug\LBSSendMail.exe.config
+D:\Work\LBSJob\git\test\LBSSendMail\LBSSendMail\obj\Debug\LBSSendMail.exe
+D:\Work\LBSJob\git\test\LBSSendMail\LBSSendMail\obj\Debug\LBSSendMail.pdb
