@@ -14,7 +14,7 @@ using System.IO;
 namespace HubBill
 {
     /// <summary>
-    /// 此項目在lbs.foxconn.com上部署.
+    /// 此項目在lbs.foxconn.com上部署.....
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
